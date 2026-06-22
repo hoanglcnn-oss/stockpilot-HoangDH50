@@ -1,0 +1,10 @@
+target/
+db/
+*.log
+.idea/
+*.class
+*.jar
+*.war
+*.zip
+*.tar.gz
+dependency-reduced-pom.xml
