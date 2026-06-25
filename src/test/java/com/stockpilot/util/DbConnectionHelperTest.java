@@ -1,6 +1,5 @@
 package com.stockpilot.util;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -35,14 +34,14 @@ public class DbConnectionHelperTest {
     public void testSchemaInitialization() throws SQLException {
         try (Connection conn = DbConnectionHelper.getConnection()) {
             DatabaseMetaData metaData = conn.getMetaData();
-            
+
             // Get all user tables
-            try (ResultSet rs = metaData.getTables(null, null, null, new String[]{"TABLE"})) {
+            try (ResultSet rs = metaData.getTables(null, null, null, new String[] { "TABLE" })) {
                 Set<String> tableNames = new HashSet<>();
                 while (rs.next()) {
                     tableNames.add(rs.getString("TABLE_NAME").toLowerCase());
                 }
-                
+
                 // Assert required tables exist
                 assertTrue(tableNames.contains("products"), "Products table should exist");
                 assertTrue(tableNames.contains("customers"), "Customers table should exist");
